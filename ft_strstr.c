@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 01:51:07 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:27:16 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 05:28:53 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	char	*ptr;
 	char	*needorig;
 
-	ptr = NULL;
+//	ptr = NULL;
 	needorig = (char *)needle;
 	if (!*needle)
 		return ((char *)haystack);
@@ -26,7 +26,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 		if (*haystack == *needle)
 		{
 			ptr = (char *)haystack;
-			while (*haystack == *needle)
+			while (*haystack == *needle && *needle)
 			{
 				haystack++;
 				needle++;
@@ -38,5 +38,5 @@ char	*ft_strstr(const char *haystack, const char *needle)
 		}
 		haystack++;
 	}
-	return (ptr);
+	return (NULL);
 }
