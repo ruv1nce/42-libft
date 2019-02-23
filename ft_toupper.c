@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:01:15 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:37:15 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 04:27:08 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	char d;
-
-	d = (unsigned char)c;
-	if (d >= 'a' && d <= 'z')
-		return (d - 32);
-	return (d);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }

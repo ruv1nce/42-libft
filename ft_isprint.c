@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:01:32 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:38:05 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 04:29:44 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 int	ft_isprint(int c)
 {
-	char d;
-
-	d = (unsigned char)c;
-	if (d >= 32 && d <= 126)
-		return (1);
-	return (0);
+	return (c >= 32 && c <= 126);
 }

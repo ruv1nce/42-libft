@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:01:09 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:39:46 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 04:27:26 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	char d;
-
-	d = (unsigned char)c;
-	if (d >= 'A' && d <= 'Z')
-		return (d + 32);
-	return (d);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }
