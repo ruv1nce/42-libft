@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:50:51 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/22 17:50:52 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/22 20:26:59 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t		i;
-	char	*dest;
-	char	*source;
+	char		*dest;
+	char		*source;
 
 	dest = (char *)dst;
 	source = (char *)src;
