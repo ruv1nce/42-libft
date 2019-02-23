@@ -10,7 +10,7 @@ SRCS = ft_bzero.c \
 	   ft_memset.c \
 	   ft_strlen.c
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
