@@ -6,11 +6,11 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:50:41 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:05:31 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 03:21:39 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "llibft.h"
+#include "libft.h"
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {

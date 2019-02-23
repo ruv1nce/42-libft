@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 21:19:16 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/22 21:27:02 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 03:25:20 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s1)
 	char	*s2;
 
 	len = ft_strlen(s1);
-	if(!(s2 = malloc(len + 1)))
+	if (!(s2 = malloc(len + 1)))
 		return (NULL);
 	i = 0;
 	while (i < len)
