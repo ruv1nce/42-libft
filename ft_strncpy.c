@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 21:56:13 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 05:47:55 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 15:35:08 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	}
 	if (!src[i])
 	{
-		while (dst[i])
+		while (i < len)
 		{
 			dst[i] = '\0';
 			i++;
