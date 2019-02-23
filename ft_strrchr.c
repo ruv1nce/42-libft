@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 22:33:48 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 00:36:16 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/23 01:01:45 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/23 01:15:07 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	dstlen;
-	size_t	srclen;
+	char	ch;
+	char	*tmp;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	if (!dstsize || (dstlen > (dstsize - 1)))
-		return (srclen + dstsize);
-	dstsize--;
-	while (*dst && dstsize)
+	tmp = NULL;
+	ch = (char)c;
+	while (*s)
 	{
-		dst++;
-		dstsize--;
+		if (*s == ch)
+			tmp = (char *)s;
+		s++;
 	}
-	while (dstsize && *src)
-	{
-		*dst = *src;
-		dst++;
-		src++;
-		dstsize--;
-	}
-	*dst = '\0';
-	return (dstlen + srclen);
+	if (tmp)
+		return (tmp);
+	if (!ch)
+		return ((char *)s);
+	return (NULL);
 }
