@@ -6,13 +6,13 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:02:16 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:27:50 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 03:36:58 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isalnum(int c)
 {
 	char d;
 

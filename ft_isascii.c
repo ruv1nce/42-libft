@@ -6,13 +6,13 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:01:41 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:01:43 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 03:37:35 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	ft_isascii(int c)
 {
 	char d;
 
