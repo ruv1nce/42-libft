@@ -6,13 +6,13 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 03:01:09 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 03:37:53 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/23 03:39:46 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_islower(int c)
+int	ft_tolower(int c)
 {
 	char d;
 
