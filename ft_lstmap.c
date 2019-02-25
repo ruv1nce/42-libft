@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 04:29:28 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 05:51:17 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 05:46:35 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 06:00:57 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	if (alst)
+	t_list	*head;
+	t_list	*node;
+
+	if (!lst)
+		return (NULL);
+	node = (*f)(lst);
+	head = node;
+	while (lst->next)
 	{
-		new->next = *alst;
-		*alst = new;
+		lst = lst->next;
+		if (!(node->next = (*f)(lst)))
+		{
+			free(node->next);
+			return (head);
+		}
+		node = node->next;
 	}
+	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 17:47:55 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 03:44:34 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/25 06:01:16 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if(!(new->content = malloc(sizeof(content_size))))
+		if (!(new->content = malloc(sizeof(content_size))))
 		{
 			free(new);
 			return (NULL);
