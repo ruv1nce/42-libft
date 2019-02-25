@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 00:42:07 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 02:53:34 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/25 06:29:54 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_putnbr_fd(int n, int fd)
 	int				len;
 	char			c;
 
-	n == 0 ? write(fd, "0", 1) : 0;
 	n < 0 ? write(fd, "-", 1) : 0;
 	nbr = (n < 0) ? n * -1 : n;
 	len = 1;
