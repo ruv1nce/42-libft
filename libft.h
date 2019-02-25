@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 19:29:58 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/24 03:54:53 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/25 01:49:15 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
 int					ft_wordcnt(const char *s, char c);
+int					ft_pow(int x, int pow);
 
 //t_list			*ft_lstnew(void const *content, size_t content_size);
 

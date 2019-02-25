@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 23:13:46 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 00:29:59 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 01:48:36 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 01:48:46 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+int		ft_pow(int x, int pow)
 {
-	unsigned int	nbr;
-	unsigned int	len;
-	int				sign;
-	char			*str;
+	int	res;
 
-	len = 1;
-	nbr = (n < 0) ? n * -1 : n;
-	if (!(sign = (n < 0) ? 0 : 1))
-		len++;
-	while (n/= 10)
-		len++;
-	if (!(str = ft_strnew(len--)))
-		return (NULL);
-	while (((len + 1) && sign) || (len && !sign))
-	{
-		str[len--] = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	!sign ? str[len] = '-' : 0;
-	return (str);
+	res = x;
+	if (pow < 0)
+		return (0);
+	if (pow == 0)
+		return (1);
+	while (--pow)
+		res *= x;
+	return (res);
 }

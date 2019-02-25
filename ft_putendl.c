@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/24 23:13:46 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 00:29:59 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 00:30:13 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 00:35:29 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+void	ft_putendl(char const *s)
 {
-	unsigned int	nbr;
-	unsigned int	len;
-	int				sign;
-	char			*str;
+	size_t	len;
 
-	len = 1;
-	nbr = (n < 0) ? n * -1 : n;
-	if (!(sign = (n < 0) ? 0 : 1))
-		len++;
-	while (n/= 10)
-		len++;
-	if (!(str = ft_strnew(len--)))
-		return (NULL);
-	while (((len + 1) && sign) || (len && !sign))
-	{
-		str[len--] = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	!sign ? str[len] = '-' : 0;
-	return (str);
+	len = ft_strlen(s);
+	write(1, s, len);
+	write(1, "\n", 1);
 }
