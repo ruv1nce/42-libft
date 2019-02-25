@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/22 17:47:55 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 03:44:34 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 04:02:09 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 04:12:28 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*new;
-
-	if (!(new = malloc(sizeof(t_list))))
-		return (NULL);
-	if (!content)
-	{
-		new->content = NULL;
-		new->content_size = 0;
-	}
-	else
-	{
-		if(!(new->content = malloc(sizeof(content_size))))
-		{
-			free(new);
-			return (NULL);
-		}
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
-	}
-	new->next = NULL;
-	return (new);
+	if (!alst || !*alst)
+		return ;
+	if ((*alst)->content)
+		(*del)((*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }
