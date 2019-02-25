@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 23:13:46 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 00:29:59 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/25 02:59:29 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 	nbr = (n < 0) ? n * -1 : n;
 	if (!(sign = (n < 0) ? 0 : 1))
 		len++;
-	while (n/= 10)
+	while (n /= 10)
 		len++;
 	if (!(str = ft_strnew(len--)))
 		return (NULL);
