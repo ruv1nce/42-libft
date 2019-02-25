@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 00:51:12 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/24 02:15:53 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:41:32 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ static size_t	ft_strimlen(char const **s)
 	return (len);
 }
 
-char	*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
 	char			*str;
 	size_t			len;
 	unsigned int	i;
-	
+
 	if (!s)
 		return (NULL);
 	len = ft_strimlen(&s);
-	if(!(str = ft_strnew(len)))
+	if (!(str = ft_strnew(len)))
 		return (NULL);
 	i = 0;
 	while (len)

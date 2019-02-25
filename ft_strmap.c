@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 18:44:46 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 18:58:25 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:33:59 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	if (s && f)
 	{
 		len = ft_strlen(s);
-		if(!(str = malloc(len + 1)))
+		if (!(str = malloc(len + 1)))
 			return (NULL);
 		i = 0;
 		while (s[i])

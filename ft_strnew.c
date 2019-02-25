@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/23 16:48:19 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/23 16:48:27 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/02/24 19:34:30 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 char	*ft_strnew(size_t size)
 {
-	 return ((char *)ft_memalloc(size + 1));
+	return ((char *)ft_memalloc(size + 1));
 }

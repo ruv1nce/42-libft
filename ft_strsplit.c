@@ -1,41 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/24 19:28:57 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/24 20:36:41 by dfonarev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static char **wordptrs(char **str, char c, int words)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**ptr;
 	int		flag;
-	int		i;
+	size_t	word;
+	size_t	i;
+	size_t	start;
 
-	if (!(ptr = malloc((words + 1) * sizeof(char *))))
+	if (!s || !(ptr = ft_memalloc(sizeof(char *) * (ft_wordcnt(s, c) + 1))))
 		return (NULL);
 	flag = 0;
 	i = 0;
-	while (i < words)
+	word = 0;
+	start = 0;
+	while (s[i])
 	{
-		if (*str == c && flag == 1)
-		{
-			flag = 0;
-			*str = '\0';
-		}
-		else if (flag == 0)
-		{
-			flag = 1;
-			*(ptr + i) = str;
-		}
+		if (s[i] == c && flag)
+			ptr[word++] = ft_strsub(s, start, i - start);
+		if (!flag && s[i] != c)
+			start = i;
+		flag = (s[i] == c) ? 0 : 1;
 		i++;
 	}
-	*(ptr + i) = NULL;
+	if (flag)
+		ptr[word++] = ft_strsub(s, start, i - start);
+	ptr[word] = NULL;
 	return (ptr);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	*str;
-
-	if (!s)
-		return (NULL);
-	if (!(str = malloc(ft_strlen(s) + 1)))
-		return (NULL);
-	str = ft_strcpy(str, s);
-	return (wordptrs(&str, c, ft_wordcnt(s, c)));
 }
