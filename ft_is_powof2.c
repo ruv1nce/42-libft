@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_is_powof2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 01:48:36 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 20:13:36 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 17:08:38 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 20:34:05 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_pow(int x, int pow)
+int	ft_is_powof2(unsigned int x)
 {
-	int	res;
-
-	res = x;
-	if (pow < 0)
-		return (0);
-	if (pow == 0)
-		return (1);
-	while (--pow)
-		res *= x;
-	return (res);
+	return (x != 0) && ((x & (x - 1)) == 0);
 }

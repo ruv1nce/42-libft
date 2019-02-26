@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 01:48:36 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 20:13:36 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 17:14:25 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 20:26:00 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_pow(int x, int pow)
+void	ft_print_hex(unsigned int nb)
 {
-	int	res;
+	char	*sym;
 
-	res = x;
-	if (pow < 0)
-		return (0);
-	if (pow == 0)
-		return (1);
-	while (--pow)
-		res *= x;
-	return (res);
+	sym = "0123456789abcdef";
+	if (nb / 16 > 0)
+		ft_print_hex(nb / 16);
+	ft_putchar(sym[nb % 16]);
 }

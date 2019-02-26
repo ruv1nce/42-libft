@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_int_range.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 01:48:36 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 20:13:36 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 17:25:15 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 20:41:00 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_pow(int x, int pow)
+int	*ft_int_range(int start, int end)
 {
-	int	res;
+	int	*tab;
+	int	size;
+	int	i;
 
-	res = x;
-	if (pow < 0)
-		return (0);
-	if (pow == 0)
-		return (1);
-	while (--pow)
-		res *= x;
-	return (res);
+	i = -1;
+	if (start > end)
+	{
+		size = start - end + 1;
+		if (!(tab = malloc(sizeof(int) * size)))
+			return (NULL);
+		while (++i < size)
+			tab[i] = start - i;
+	}
+	else
+	{
+		size = end - start + 1;
+		if (!(tab = malloc(sizeof(int) * size)))
+			return (NULL);
+		while (++i < size)
+			tab[i] = start + i;
+	}
+	return (tab);
 }

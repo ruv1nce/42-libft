@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pow.c                                           :+:      :+:    :+:   */
+/*   ft_rotx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 01:48:36 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 20:13:36 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 17:48:27 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 19:55:44 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_pow(int x, int pow)
+char	*ft_rotx(char *s, int x)
 {
-	int	res;
+	int		i;
+	int		ul;
+	char	c;
+	char	*str;
 
-	res = x;
-	if (pow < 0)
-		return (0);
-	if (pow == 0)
-		return (1);
-	while (--pow)
-		res *= x;
-	return (res);
+	if (!s || x < 0 || !(str = ft_strnew(ft_strlen(s))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z'))
+		{
+			ul = (s[i] >= 'A' && s[i] <= 'Z') ? 64 : 96;
+			c = (s[i] - ul + x) % 26;
+			c = (c == 0) ? 26 + ul : c + ul;
+			str[i] = c;
+		}
+		else
+			str[i] = s[i];
+		i++;
+	}
+	return (str);
 }
