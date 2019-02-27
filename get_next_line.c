@@ -25,6 +25,8 @@ static int	resolve_buf(char **b, char **s)
 		len = BUFF_SIZE - start;
 //		printf("~len=%zu~", len);	//
 		*s = ft_strsub(*b, start, len); // gotta free *s
+		/* zero the buf */
+		ft_bzero(*b, BUFF_SIZE);
 		return (1);
 	}
 	else
@@ -59,13 +61,13 @@ static int	findnl(char *buf, int ret, int *flag)
 
 int			get_next_line(const int fd, char **line)
 {
-	unsigned int	ret;
-	static char		buf[BUFF_SIZE];
+	int				ret;
+	static char		buf[BUFF_SIZE]; // do BUFF_SIZE+1 and then use strlen for strsub size?
 	char			*s;
 	char			*b;
 	int				flag;
 	
-	if (!line || fd == -1)
+	if (!line || fd < 0 || !fd)
 		return (-1);
 	b = &buf[0];
 	s = NULL;
@@ -78,6 +80,8 @@ int			get_next_line(const int fd, char **line)
 	/* read */
 	while (!flag && (ret = read(fd, buf, BUFF_SIZE)))
 	{
+		if (ret == -1)
+			return (-1);
 		/* zero the old bytess if EOF */
 		if (ret < BUFF_SIZE)
 			ft_bzero(&buf[ret], BUFF_SIZE - ret);
@@ -85,9 +89,10 @@ int			get_next_line(const int fd, char **line)
 		b = ft_strnew(ret);	// gotta free b
 		b = ft_strncpy(b, buf, ret);
 		s = ft_strjoin(s, b);
+		free(b);
 	}
 	*line = s;
-	if (flag)
+	if (s && *s)
 		return (1);
 	return (0);
 }
