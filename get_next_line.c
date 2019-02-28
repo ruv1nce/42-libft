@@ -51,8 +51,8 @@ static int	findnl(char *buf, int ret, int *flag)
 	{
 		if (buf[i] == '\n')
 		{
-			ret = i;
 			*flag = 1;
+			return (i);
 		}
 		i++;
 	}
@@ -67,7 +67,7 @@ int			get_next_line(const int fd, char **line)
 	char			*b;
 	int				flag;
 	
-	if (!line || fd < 0 || !fd)
+	if (!line || fd < 0)
 		return (-1);
 	b = &buf[0];
 	s = NULL;
