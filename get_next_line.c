@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/27 18:12:56 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/27 22:31:43 by dfonarev         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include <stdio.h>	//
 
@@ -8,7 +20,7 @@ static int	resolve_buf(char **b, char **s)
 	unsigned int	start;
 	size_t			len;
 
-	/* what if buf contains two '\n' back-to-back ???? */
+						/* what if buf contains two '\n' back-to-back ???? */
 	
 	/* if first '\n' not found */
 	if (!(str1 = ft_strchr(*b, '\n')))
@@ -16,16 +28,17 @@ static int	resolve_buf(char **b, char **s)
 		return (1);
 	/* find second '\n' */
 	start = str1 - *b + 1;
-//	printf("~start=%u~", start);	//
 	str2 = ft_strchr(str1 + 1, '\n');
 	/* if second '\n' not found */
 	if (!(str2))
 	{
+		/* check if buf == '\0' skip all */
+		if (!*(str1 + 1))
+			return (1);
 		/* save the tail, go to read  */
 		len = BUFF_SIZE - start;
-//		printf("~len=%zu~", len);	//
 		*s = ft_strsub(*b, start, len); // gotta free *s
-		/* zero the buf */
+		/* clear the buf */
 		ft_bzero(*b, BUFF_SIZE);
 		return (1);
 	}
@@ -33,7 +46,6 @@ static int	resolve_buf(char **b, char **s)
 	{
 		/* save the chars found between two '\n' */
 		len = str2 - str1 -1;
-//		printf("~len=%zu~", len);	//
 		*s = ft_strsub(*b, start, len);	// gotta free *s
 		/* cut buf */
 		*b = ft_strncpy(*b, (str1 + 1), BUFF_SIZE);
@@ -65,6 +77,7 @@ int			get_next_line(const int fd, char **line)
 	static char		buf[BUFF_SIZE]; // do BUFF_SIZE+1 and then use strlen for strsub size?
 	char			*s;
 	char			*b;
+	char			*tmp;	//
 	int				flag;
 	
 	if (!line || fd < 0)
@@ -88,7 +101,9 @@ int			get_next_line(const int fd, char **line)
 		ret = findnl(buf, ret, &flag);
 		b = ft_strnew(ret);	// gotta free b
 		b = ft_strncpy(b, buf, ret);
+		tmp = s;	//
 		s = ft_strjoin(s, b);
+		free(tmp);	//
 		free(b);
 	}
 	*line = s;
