@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:12:56 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/28 04:00:31 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/03/02 06:04:10 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,28 +84,27 @@ static void	savestr(char *src, int size, char **line)
 int			get_next_line(const int fd, char **line)
 {
 	int				ret;
-	static char		buf[MAX_FD][BUFF_SIZE + 1];
+	static char		buf[BUFF_SIZE + 1];
 	int				flag;
 
-	if (!line || fd < 0)
+	if (!line || fd < 0 || read(fd, buf, 0) < 0)
 		return (-1);
 	*line = NULL;
-	if (!(resolve_buf(&buf[fd][0], line)))
+	if (!(resolve_buf(&buf[0], line)))
 		return (1);
 	flag = 0;
-	/* read */
-	while (!flag && (ret = read(fd, buf[fd], BUFF_SIZE)))
+	while (!flag && (ret = read(fd, buf, BUFF_SIZE)))
 	{
 		if (ret == -1)
 			return (-1);
 		/* zero the old bytes if EOF */
 		if (ret < BUFF_SIZE)
-			ft_bzero(&buf[fd][ret], BUFF_SIZE - ret);
+			ft_bzero(&buf[ret], BUFF_SIZE + 1 - ret);
 		/* if found '\n' in buf, set ret and flag */
-		ret = strchr_flag(buf[fd], ret, &flag);
-		savestr(buf[fd], ret, line);
+		ret = strchr_flag(buf, ret, &flag);
+		savestr(buf, ret, line);
 	}
-	if (*line && **line)
+	if (*line && (**line || flag))
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:13:10 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/28 04:02:20 by dfonarev         ###   ########.fr       */
+/*   Updated: 2019/03/01 22:06:11 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include <limits.h>
 
 # define BUFF_SIZE 100
-# define MAX_FD 4864
+# define MAX_FD OPEN_MAX
 
 int	get_next_line(const int fd, char **line);
 
