@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/25 04:06:11 by dfonarev          #+#    #+#             */
-/*   Updated: 2019/02/25 04:13:28 by dfonarev         ###   ########.fr       */
+/*   Created: 2019/02/25 05:46:35 by dfonarev          #+#    #+#             */
+/*   Updated: 2019/02/25 06:00:57 by dfonarev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_list.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*tmp;
+	t_list	*head;
+	t_list	*node;
 
-	if (!alst || !*alst)
-		return ;
-	while (*alst)
+	if (!lst)
+		return (NULL);
+	node = (*f)(lst);
+	head = node;
+	while (lst->next)
 	{
-		if ((*alst)->content)
-			(*del)((*alst)->content, (*alst)->content_size);
-		tmp = *alst;
-		*alst = (*alst)->next;
-		free(tmp);
+		lst = lst->next;
+		if (!(node->next = (*f)(lst)))
+		{
+			free(node->next);
+			return (head);
+		}
+		node = node->next;
 	}
-	*alst = NULL;
+	return (head);
 }

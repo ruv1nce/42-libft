@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static int	resolve_buf(char *buf, char **line)
 {
@@ -36,7 +36,7 @@ static int	resolve_buf(char *buf, char **line)
 		len = ft_strlen(buf) - start;
 		*line = ft_strsub(buf, start, len);
 		/* clear the buf */
-		ft_bzero(buf, BUFF_SIZE);
+		ft_bzero(buf, GNL_BUF_SIZE);
 		return (1);
 	}
 	else
@@ -45,7 +45,7 @@ static int	resolve_buf(char *buf, char **line)
 		len = str2 - str1 - 1;
 		*line = ft_strsub(buf, start, len);
 		/* cut buf */
-		buf = ft_strncpy(buf, (str1 + 1), BUFF_SIZE);
+		buf = ft_strncpy(buf, (str1 + 1), GNL_BUF_SIZE);
 		/* skip reading */
 		return (0);
 	}
@@ -81,10 +81,10 @@ static void	savestr(char *src, int size, char **line)
 	free(b);
 }
 
-int			get_next_line(const int fd, char **line)
+int			ft_gnl_fd(const int fd, char **line)
 {
 	int				ret;
-	static char		buf[MAX_FD][BUFF_SIZE + 1];
+	static char		buf[MAX_FD][GNL_BUF_SIZE + 1];
 	int				flag;
 
 	if (!line || fd < 0 || fd >= MAX_FD || read(fd, buf[fd], 0) < 0)
@@ -93,13 +93,13 @@ int			get_next_line(const int fd, char **line)
 	if (!(resolve_buf(&buf[fd][0], line)))
 		return (1);
 	flag = 0;
-	while (!flag && (ret = read(fd, buf[fd], BUFF_SIZE)))
+	while (!flag && (ret = read(fd, buf[fd], GNL_BUF_SIZE)))
 	{
 		if (ret == -1)
 			return (-1);
 		/* zero the old bytes if EOF */
-		if (ret < BUFF_SIZE)
-			ft_bzero(&buf[fd][ret], BUFF_SIZE + 1 - ret);
+		if (ret < GNL_BUF_SIZE)
+			ft_bzero(&buf[fd][ret], GNL_BUF_SIZE + 1 - ret);
 		/* if found '\n' in buf, set ret and flag */
 		ret = strchr_flag(buf[fd], ret, &flag);
 		savestr(buf[fd], ret, line);
