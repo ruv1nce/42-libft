@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_list.h                                       :+:      :+:    :+:   */
+/*   ft_binsearch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_LIST_H
-# define LIBFT_LIST_H
+#include "libft.h"
 
-# include <stdlib.h>
-
-typedef struct		s_list
+int	ft_binsearch(int *arr, int num, int size)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+	int start;
+	int mid;
 
-t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-
-void				*ft_memcpy(void *dst, const void *src, size_t n);
-
-#endif
+	start = 0;
+	size--;
+	while (start <= size)
+	{
+		mid = (start + size) / 2;
+		if (arr[mid] == num)
+			return (mid);
+		else if (arr[mid] < num)
+			start = mid + 1;
+		else if (arr[mid] > num)
+			size = mid - 1;
+	}
+	return (-1);
+}
