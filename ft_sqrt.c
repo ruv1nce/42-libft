@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt_floor.c                                    :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dfonarev <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,24 @@
 
 #include "libft.h"
 
-int	ft_sqrt_floor(int x)
-{
-	int	start;
-	int	end;
-	int	mid;
-	int	ans;
+/*
+** mode 0 = floor, mode 1 = ceiling
+*/
 
-	start = 0;
-	end = x / 2;
-	mid = 0;
-	ans = 0;
-	while (start <= end)
+int	ft_sqrt(int n, int mode)
+{
+	int	x;
+	int	y;
+
+	x = n;
+	y = (x + 1) / 2;
+	while (y < x)
 	{
-		mid = (start + end) / 2;
-		if (mid * mid == x)
-			return (mid);
-		else if (mid * mid < x)
-		{
-			start = mid + 1;
-			ans = mid;
-		}
-		else if (mid * mid > x)
-			end = mid - 1;
+		x = y;
+		y = (x + n / x) / 2;
 	}
-	return (ans);
+	if (x * x == n || !mode)
+		return (x);
+	else
+		return (x + 1);
 }
