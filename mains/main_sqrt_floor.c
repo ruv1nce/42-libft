@@ -11,7 +11,6 @@ int	main(void)
 	x = -1;
 	while (++x < 51)
 	{
-		printf("floor %i, %i\n", x, ft_sqrt_floor(x));
 		printf("sqrt0 %i, %i\n", x, ft_sqrt(x, 0));
 		printf("sqrt1 %i, %i\n", x, ft_sqrt(x, 1));
 		printf("libc  %i, %i\n\n", x, (int)sqrt((double)x));
