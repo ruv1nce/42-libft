@@ -1,7 +1,6 @@
+settings.json
+.vscode/
 test
-libft.h
-*.swp
-
 # Prerequisites
 *.d
 
