@@ -58,11 +58,3 @@ char		*ft_itoa_base(long long value, int base, int mode)
 		str[++len] = '-';
 	return (str);
 }
-
-// int		main(int argc, char **argv)
-// {
-// 	if (argc == 3)
-// 	{
-// 		printf("%s\n", ft_itoa_base(atoi(argv[1]), atoi(argv[2]), 1));
-// 	}
-// }
